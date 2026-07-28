@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PMIS Digital Strategy Pitch | Hamdi El Shimi</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-navy: #1e3a5f;
+            --primary-gold: #d4af37;
+            --secondary-blue: #2c5aa0;
+            --accent-teal: #00a8cc;
+            --light-bg: #f8fafc;
+            --dark-text: #1e293b;
+            --gray-text: #64748b;
+            --border-light: #e2e8f0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            background: var(--light-bg);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(30, 58, 95, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-gold);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-navy) 0%, var(--secondary-blue) 100%);
+            color: white;
+            padding: 120px 2rem 80px;
+            text-align: center;
+            margin-top: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="1200" height="600" fill="url(%23grid)" /></svg>');
+            opacity: 0.5;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary-navy);
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--primary-gold);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--gray-text);
+            margin-bottom: 3rem;
+            max-width: 700px;
+        }
+
+        /* Storyboard Styles */
+        .storyboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .storyboard {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .storyboard:hover {
+            transform: translateY(-8px);
+        }
+
+        .storyboard-header {
+            background: linear-gradient(135deg, var(--primary-navy) 0%, var(--secondary-blue) 100%);
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .storyboard-header h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .storyboard-header p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .storyboard-content {
+            padding: 2rem;
+        }
+
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 1rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .timeline-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .timeline-time {
+            background: var(--primary-gold);
+            color: var(--primary-navy);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            white-space: nowrap;
+            height: fit-content;
+        }
+
+        .timeline-description {
+            flex: 1;
+        }
+
+        .timeline-description h4 {
+            color: var(--primary-navy);
+            margin-bottom: 0.3rem;
+            font-size: 1rem;
+        }
+
+        .timeline-description p {
+            color: var(--gray-text);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .cta-badge {
+            background: var(--accent-teal);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 1rem;
+        }
+
+        /* Framework Sections */
+        .framework-section {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .framework-section h3 {
+            color: var(--primary-navy);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .framework-section p {
+            color: var(--gray-text);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .framework-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .framework-list li {
+            padding: 0.8rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: var(--dark-text);
+        }
+
+        .framework-list li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary-gold);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, var(--primary-navy) 0%, var(--secondary-blue) 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .contact-item {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-item strong {
+            display: block;
+            color: var(--primary-gold);
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .contact-item a:hover {
+            color: var(--primary-gold);
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(30, 58, 95, 0.95);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="nav-logo">PMIS Digital Strategy Pitch</div>
+            <ul class="nav-links">
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#reels">Reels Concepts</a></li>
+                <li><a href="#strategy">Strategy</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Transform PMIS into a Digital Leader</h1>
+            <p>A comprehensive strategy to build brand identity, drive enrollment, and establish market presence in the critical months ahead.</p>
+        </div>
+    </section>
+
+    <!-- Overview -->
+    <section id="overview">
+        <div class="container">
+            <h2 class="section-title">The Opportunity</h2>
+            <p class="section-subtitle">PMIS is at a pivotal moment. With the new school year approaching, parents are making enrollment decisions right now. The school that establishes a clear, compelling digital identity will capture enrollment and build lasting community trust.</p>
+            
+            <div class="framework-section">
+                <h3>Why This Matters for PMIS</h3>
+                <p>Research shows that 78% of parents research schools online before visiting. Yet PMIS's current digital presence doesn't reflect the quality of the school itself. This gap is costing you enrollments.</p>
+                <ul class="framework-list">
+                    <li>Competitors are already active on Reels and building community</li>
+                    <li>Parents have questions, but no clear answers on your channels</li>
+                    <li>Your staff are your best brand ambassadors, but they're not empowered to share</li>
+                    <li>You have no measurement framework to prove ROI on digital investments</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reels Concepts -->
+    <section id="reels">
+        <div class="container">
+            <h2 class="section-title">Creative Direction: 3 Sample Reels Concepts</h2>
+            <p class="section-subtitle">These concepts demonstrate our creative range and strategic thinking. Each is designed to perform on the algorithm while building PMIS's unique identity.</p>
+
+            <div class="storyboard-grid">
+                <!-- Concept 1 -->
+                <div class="storyboard">
+                    <div class="storyboard-header">
+                        <h3>Concept 1: Identity Pillar</h3>
+                        <p>"What Makes PMIS Different?"</p>
+                    </div>
+                    <div class="storyboard-content">
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-time">0:00-0:03</div>
+                                <div class="timeline-description">
+                                    <h4>The Hook</h4>
+                                    <p>Quick cuts of three different teachers answering: "What makes a truly international education?" Text overlay creates curiosity.</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-time">0:03-0:15</div>
+                                <div class="timeline-description">
+                                    <h4>The Value</h4>
+                                    <p>Principal's voiceover explaining PMIS philosophy, overlaid with footage of diverse students collaborating on a real project (not staged).</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-time">0:15-0:20</div>
+                                <div class="timeline-description">
+                                    <h4>The CTA</h4>
+                                    <p>Principal on camera: "Experience the difference yourself. Link in bio to book a tour."</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cta-badge">🎯 Builds Authority</div>
+                    </div>
+                </div>
+
+                <!-- Concept 2 -->
+                <div class="storyboard">
+                    <div class="storyboard-header">
+                        <h3>Concept 2: Academic Pillar</h3>
+                        <p>"Inside the Lab"</p>
+                    </div>
+                    <div class="storyboard-content">
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-time">0:00-0:03</div>
+                                <div class="timeline-description">
+                                    <h4>The Hook</h4>
+                                    <p>Extreme close-up of a science experiment bubbling or robotics project moving. Text: "POV: You're in a PMIS Science Class 🔬"</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-time">0:03-0:15</div>
+                                <div class="timeline-description">
+                                    <h4>The Value</h4>
+                                    <p>Trending upbeat audio. Fast cuts of students actively doing the experiment—hands-on learning, not textbooks. Show real problem-solving.</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-time">0:15-0:20</div>
+                                <div class="timeline-description">
+                                    <h4>The CTA</h4>
+                                    <p>Text overlay: "We prepare students for the future, not just exams. Discover our curriculum."</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cta-badge">📊 Drives Engagement</div>
+                    </div>
+                </div>
+
+                <!-- Concept 3 -->
+                <div class="storyboard">
+                    <div class="storyboard-header">
+                        <h3>Concept 3: Student Life Pillar</h3>
+                        <p>"The Morning Rush"</p>
+                    </div>
+                    <div class="storyboard-content">
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-time">0:00-0:03</div>
+                                <div class="timeline-description">
+                                    <h4>The Hook</h4>
+                                    <p>Teacher with coffee cup smiling. Text: "The best part of the day... ☕" Creates relatability and warmth.</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-time">0:03-0:15</div>
+                                <div class="timeline-description">
+                                    <h4>The Value</h4>
+                                    <p>Energetic trending audio. Montage of students arriving, greeting friends, opening lockers, settling into class. High energy, natural lighting, genuine moments.</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-time">0:15-0:20</div>
+                                <div class="timeline-description">
+                                    <h4>The CTA</h4>
+                                    <p>Text overlay: "Join the PMIS Family. Enrollment open for [Year]."</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cta-badge">❤️ Builds Community</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Strategic Framework -->
+    <section id="strategy">
+        <div class="container">
+            <h2 class="section-title">Strategic Framework: The 5-Phase Approach</h2>
+            <p class="section-subtitle">A proven sequence that builds identity first, then amplifies it with paid advertising.</p>
+
+            <div class="framework-section">
+                <h3>Phase 1: Define Identity (Weeks 1-2)</h3>
+                <p>Before any content is created, we establish PMIS's unique brand positioning, core values, and differentiation narrative. This becomes the foundation for everything that follows.</p>
+            </div>
+
+            <div class="framework-section">
+                <h3>Phase 2: Build Foundation (Weeks 2-3)</h3>
+                <p>Consolidate social presence, claim Google Business Profile, establish owned web presence. This ensures PMIS is discoverable and credible when parents search.</p>
+            </div>
+
+            <div class="framework-section">
+                <h3>Phase 3: Create Content (Weeks 3-4)</h3>
+                <p>Develop strategic content calendar, train staff ambassadors, launch consistent identity-driven content. This builds organic reach and engagement without paid ads.</p>
+            </div>
+
+            <div class="framework-section">
+                <h3>Phase 4: Amplify Reach (Weeks 4-8)</h3>
+                <p>Execute content calendar, re-amplify earned media, build community engagement. Monitor metrics and optimize based on performance data.</p>
+            </div>
+
+            <div class="framework-section">
+                <h3>Phase 5: Scale Growth (Week 8+)</h3>
+                <p>Launch targeted paid advertising (Meta, Google Search) to scale successful campaigns. By this point, we have proven organic content that converts, so paid ads amplify winners, not experiments.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Frameworks -->
+    <section>
+        <div class="container">
+            <h2 class="section-title">Operational Excellence: 6 Strategic Frameworks</h2>
+            <p class="section-subtitle">Beyond creative content, we provide the systems and protocols that ensure consistent execution and measurable results.</p>
+
+            <div class="framework-section">
+                <h3>1. Staff Ambassador Program</h3>
+                <p>Teachers are your best brand ambassadors. We provide training, incentives (PD credits, recognition, stipends), and a strict media release protocol to ensure authentic, compliant content creation.</p>
+            </div>
+
+            <div class="framework-section">
+                <h3>2. Content Templates & Language Strategy</h3>
+                <p>Dual-language (English/Arabic) templates ensure consistency while respecting your diverse parent community. Clear guidelines on which content types run in which language prevent confusion and maximize reach.</p>
+            </div>
+
+            <div class="framework-section">
+                <h3>3. Measurement Dashboard</h3>
+                <p>A Looker Studio dashboard tracks all KPIs in real-time: social engagement, website traffic, lead generation, and enrollment conversions. Monthly reports show exactly what's working and where to adjust.</p>
+            </div>
+
+            <div class="framework-section">
+                <h3>4. Crisis Management Protocol</h3>
+                <p>Clear escalation matrix with named decision-owners at each level. Pre-drafted holding statements in English and Arabic ensure rapid, professional response to any online issue.</p>
+            </div>
+
+            <div class="framework-section">
+                <h3>5. Enrollment Conversion Funnel</h3>
+                <p>A 3-step funnel moves parents from ad engagement → lead capture → campus tour booking. Automated email nurture sequences (or manual fallback) keep leads warm and moving toward conversion.</p>
+            </div>
+
+            <div class="framework-section">
+                <h3>6. Content Approval Workflow</h3>
+                <p>Strict turnaround times (2-5 business days) and privacy checks ensure all content meets brand standards and complies with student media releases before posting.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-content">
+                <h2>Ready to Get Started?</h2>
+                <p>Let's transform PMIS into a digital leader and drive enrollment growth before the school year begins.</p>
+                
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <strong>Consultant</strong>
+                        <p>Hamdi El Shimi</p>
+                    </div>
+                    <div class="contact-item">
+                        <strong>Email</strong>
+                        <a href="mailto:hamdy_shimi1@hotmail.com">hamdy_shimi1@hotmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <strong>Phone</strong>
+                        <a href="tel:+201092760051">+20 109 276 0051</a>
+                    </div>
+                </div>
+
+                <p style="margin-top: 2rem; font-size: 0.95rem; opacity: 0.9;">
+                    Let's discuss your enrollment goals and create a customized implementation plan tailored to PMIS's unique needs and timeline.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 PMIS Digital Strategy Pitch | Prepared by Hamdi El Shimi | <a href="https://www.facebook.com/share/1BgvEnGUhD/" target="_blank" style="color: var(--primary-gold); text-decoration: none;">Visit PMIS on Facebook</a></p>
+    </footer>
+</body>
+</html>
